@@ -10,10 +10,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Unzip SDF_PANO.zip
+      - name: Unzip SDF_Pano.zip
         run: |
-          unzip -o SDF_PANO.zip -d .
-          rm SDF_PANO.zip
+          unzip -o SDF_Pano.zip -d .
+          rm SDF_Pano.zip
       - name: Commit unzipped files
         run: |
           git config --global user.name 'github-actions[bot]'
