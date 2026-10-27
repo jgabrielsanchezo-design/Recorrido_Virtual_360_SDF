@@ -1,0 +1,23 @@
+name: Unzip Project
+on:
+  push:
+    branches: [ main ]
+permissions:
+  contents: write
+jobs:
+  unzip:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Unzip SDFPANO.zip
+        run: |
+          unzip -o SDFPANO.zip -d .
+          rm SDFPANO.zip
+      - name: Commit unzipped files
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@://github.com'
+          git add -A
+          git commit -m "Descompresión automática de archivos" || echo "No changes"
+          git push
